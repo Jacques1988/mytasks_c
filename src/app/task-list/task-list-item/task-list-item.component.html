@@ -3,7 +3,7 @@
   <span [ngClass]="{ 'text-stroked': task().checked }" class="task-text">{{
     task().task
   }}</span>
-  <span class="task-text">{{ taskStatus }}</span>
+  <span class="task-text">{{ task().status }}</span>
   <span (click)="delete()" class="task-text"
     ><svg
       width="30"

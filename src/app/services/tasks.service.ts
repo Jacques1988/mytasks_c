@@ -6,7 +6,7 @@ import { Task } from '../models/task';
   providedIn: 'root',
 })
 export class TasksService {
-  tasks = tasks;
+  tasks = tasks as Task[];
   constructor() {}
 
   getAllTasks() {
@@ -15,12 +15,7 @@ export class TasksService {
 
   updateTask(update: Task) {
     let updatedTask = this.tasks.find((task: Task) => task.id === update.id);
-    if (updatedTask!.status === 'completed') {
-      updatedTask!.status = 'incompleted';
-    } else {
-      updatedTask!.status = 'completed';
-    }
-
+    
     let taskIndex = this.tasks.findIndex((task: Task) => task.id === update.id);
     this.tasks.splice(taskIndex, 1)
     this.tasks.splice(taskIndex, 0, updatedTask!)

@@ -12,19 +12,14 @@ import { NgClass } from '@angular/common';
 })
 export class TaskListItemComponent {
 task = input.required<Task>()
-taskStatus!: string
 toggleTaskEvent = output()
 deleteTask = output()
 
-ngOnInit(){
-  this.taskStatus = this.task().status
-}
 
 
 toggleTask(){
   this.task().checked = !this.task().checked
-  this.task().checked ? this.taskStatus = "completed" : this.taskStatus = "incompleted"
-
+  this.task().checked ? this.task().status = "completed" : this.task().status = "incomplete"
   this.toggleTaskEvent.emit()
 }
 
