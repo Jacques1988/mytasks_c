@@ -21,6 +21,16 @@ export class TasksService {
     this.tasks.splice(taskIndex, 0, updatedTask!)
   }
 
+  createNewTask(newTask: string){
+    const task = {
+      id: this.tasks.length +1,
+      task : newTask,
+      status : "incomplete",
+      checked: false
+    }
+    this.tasks.push(task as Task)
+  }
+
   
   deleteTask(deleteTask: Task){
     let taskIndex = this.tasks.findIndex((task : Task) => task.id === deleteTask.id)

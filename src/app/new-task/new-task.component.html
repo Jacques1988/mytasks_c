@@ -1,8 +1,8 @@
 <section class="container">
     <h3 class="teaser">Add new Task</h3>
     <div class="input-container">
-        <input type="text" placeholder="Enter your new task here">
-        <button class="custom-btn">Add</button>
+        <input #newTaskInput type="text" placeholder="Enter your new task here">
+        <button (click)="addNewTask()" class="custom-btn">Add</button>
     </div>
 </section>
 

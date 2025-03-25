@@ -57,3 +57,22 @@ input[type="checkbox"]:checked::after {
         width:100%;
     }
 }
+
+@media (max-width:480px){
+    .status-text{
+        display:none;
+    }
+
+    .trash{
+        display:none;
+    }
+
+    .list-item{
+        justify-content: flex-start;
+    }
+
+    .task-text{
+        margin-left:0.75rem;
+    }
+ 
+}
