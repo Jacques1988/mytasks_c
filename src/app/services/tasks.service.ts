@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { tasks } from '../mock-data';
 import { Task } from '../models/task';
 
@@ -7,10 +7,12 @@ import { Task } from '../models/task';
 })
 export class TasksService {
   tasks = tasks as Task[];
+  filteredTasks = signal<Task[]>(this.tasks)
   constructor() {}
 
   getAllTasks() {
-    return this.tasks;
+    this.filteredTasks.set(this.tasks)
+    return this.filteredTasks()
   }
 
   updateTask(update: Task) {
@@ -31,9 +33,16 @@ export class TasksService {
     this.tasks.push(task as Task)
   }
 
-  
   deleteTask(deleteTask: Task){
     let taskIndex = this.tasks.findIndex((task : Task) => task.id === deleteTask.id)
     this.tasks.splice(taskIndex, 1)
+  }
+
+  getCompletedTasks(){
+    this.filteredTasks.set(this.tasks.filter((task: Task) => task.status === "completed"))
+  }
+
+  getIncompleteTasks(){
+    this.filteredTasks.set(this.tasks.filter((task: Task) => task.status === "incomplete"))
   }
 }

@@ -5,8 +5,8 @@
     </div>
     <div class="list-container">
         <ul class="list-group">
-            @if(tasks){
-                @for(task of tasks; track task.id){
+            @if(tasks()){
+                @for(task of tasks(); track task.id){
                     <app-task-list-item style="width:100%;" [task]="task" (toggleTaskEvent)="changeTaskStatus(task)" (deleteTask)="deleteTask(task)"></app-task-list-item>
                 }
             }

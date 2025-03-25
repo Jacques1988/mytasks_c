@@ -1,8 +1,8 @@
 <section class="container">
   <h3 class="teaser">Filter controls</h3>
   <div class="btn-container">
-    <button class="custom-btn">All Tasks</button>
-    <button class="custom-btn">Completed</button>
-    <button class="custom-btn">Incompleted</button>
+    <button (click)="getAllTask()" class="custom-btn">All Tasks</button>
+    <button (click)="getCompletedTasks()" class="custom-btn">Completed</button>
+    <button (click)="getIncompleteTasks()" class="custom-btn">Incompleted</button>
   </div>
 </section>
